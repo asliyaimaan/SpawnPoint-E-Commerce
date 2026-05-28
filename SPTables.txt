@@ -1,0 +1,119 @@
+FINAL CLEAN STRUCTURE
+
+users:
+id
+username
+email
+xp_points
+avatar_url
+created_at
+
+categories:
+id
+name
+
+platforms:
+id
+name
+
+products:
+id
+name
+description
+price
+image_url
+category_id
+platform_id NULLABLE
+featured
+quantity
+created_at
+
+cart_items:
+id
+user_id
+product_id
+quantity
+
+orders:
+id
+user_id
+total_price
+status
+created_at
+
+order_items:
+id
+order_id
+product_id
+quantity
+price
+
+comments:
+id
+user_id
+product_id
+content
+created_at
+
+
+---SAMPLE DATA---
+
+GAMES:
+The Sims 4 (PC) — $39.99
+Create unique Sims, build dream homes, and shape unforgettable stories in the ultimate life simulation experience.
+
+Grand Theft Auto VI (PC) — $69.99
+Dive into a sprawling open world filled with crime, action, and high-stakes adventures across a vibrant modern city.
+
+Minecraft (PC) — $29.99
+Explore endless worlds, build incredible creations, and survive dangerous nights in the legendary sandbox adventure.
+
+Harvest Moon: More Friends of Mineral Town (GBA) — $24.99
+Restore your grandfather’s farm, raise animals, and build friendships in this charming farming life simulator.
+
+The Urbz: Sims in the City (GBA) — $19.99
+Climb the social ladder, explore vibrant districts, and become the ultimate Urb in this stylish city life adventure.
+
+Pokemon Sapphire (GBA) — $49.99
+Travel through the Hoenn region, catch powerful Pokémon, and challenge legendary trainers on your journey to become Champion.
+
+Harvest Moon DS Cute (DS) — $34.99
+Manage your farm, meet charming villagers, and uncover magical secrets in this beloved farming classic.
+
+The Sims 2 (DS) — $14.99
+Run a strange desert hotel, help quirky guests, and uncover mysteries in this unique Sims adventure.
+
+Harvest Moon: Tale of Two Towns (DS) — $29.99
+Choose between two rival villages, grow your farm, and unite the towns through friendship and hard work.
+
+Rune Factory: A Fantasy Harvest Moon (DS) — $39.99
+Mix farming, dungeon exploration, and fantasy combat in this magical RPG farming adventure.
+
+Pokemon Sword and Pokemon Shield (Switch) — $59.99
+Explore the Galar region, battle powerful trainers, and discover Dynamax Pokémon in a new generation adventure.
+
+Tomodachi Life: Living the Dream (Switch) — $54.99
+Create hilarious Mii characters, build relationships, and watch unpredictable island life unfold in this quirky life simulator.
+
+Super Mario Odyssey (Switch) — $59.99
+Join Mario on a globe-trotting adventure packed with creative worlds, hidden secrets, and exciting platforming challenges.
+
+
+CONSOLES:
+Nintendo Switch — $299.99
+A versatile hybrid console that lets you play at home or on the go with a massive library of beloved Nintendo games.
+
+Nintendo Switch Lite — $199.99
+A compact handheld-only version of the Switch designed for portable gaming anytime, anywhere.
+
+Nintendo Switch: Animal Crossing Edition — $359.99
+A special edition Nintendo Switch featuring pastel Joy-Cons and charming Animal Crossing-themed designs.
+
+Game Boy Advance — $89.99
+Nintendo’s iconic handheld console packed with classic retro adventures and timeless pixel-art games.
+
+Nintendo DS — $119.99
+A dual-screen handheld console that introduced touch-screen gaming and unforgettable Nintendo classics.
+
+Nintendo 3DS — $179.99
+Experience immersive portable gaming with glasses-free 3D visuals and a huge library of fan-favorite titles.
