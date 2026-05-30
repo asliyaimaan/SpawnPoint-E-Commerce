@@ -7,14 +7,14 @@ export default async function Home() {
 
   if (error) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-black text-white">
+      <main className="flex min-h-screen items-center justify-center bg-white text-black">
         <p>Error loading products.</p>
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-black p-10 text-white">
+    <main className="min-h-screen bg-white p-10 text-black">
       <h1 className="mb-8 text-5xl font-bold">SpawnPoint</h1>
 
       <div className="space-y-4">
