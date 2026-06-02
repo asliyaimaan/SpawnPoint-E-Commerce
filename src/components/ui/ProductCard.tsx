@@ -1,0 +1,42 @@
+'use client';
+
+import Image from "next/image";
+
+interface ProductProps {
+  name: string;
+  price: number;
+  image_url: string;
+}
+
+export default function ProductCard({ name, price, image_url }: ProductProps) {
+  return (
+    <div className="border-2 border-black bg-white rounded-[24px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col h-full overflow-hidden">
+      
+      {/* Image Container */}
+      <div className="relative w-full aspect-square border-b-2 border-black bg-gray-50 overflow-hidden">
+        <Image 
+          src={image_url} 
+          alt={name} 
+          fill 
+          className="object-cover" 
+        />
+      </div>
+
+      {/* Product Info */}
+      <div className="p-4 flex-grow">
+        <h3 className="text-sm leading-tight mb-4 font-mono">{name}</h3>
+        
+        {/* Footer*/}
+        <div className="flex justify-between items-center">
+          <span className="text-xl font-mono">${price}</span>
+          <button 
+            onClick={() => console.log("Added to basket!")}
+            className="cursor-pointer border-2 border-black px-3 py-2 bg-[#FDFD96] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] text-[10px] font-bold transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+          >
+            + ADD
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

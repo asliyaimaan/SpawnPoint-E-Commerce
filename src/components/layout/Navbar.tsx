@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,15 +30,15 @@ export default function Navbar() {
 
       {/* Desktop Links */}
       <div className="hidden md:flex gap-6 text-lg font-bold uppercase text-gray-900">
-        <Link href="/" className="hover:text-[#d4b2ff]">Home</Link>
-        <Link href="/shop" className="hover:text-[#d4b2ff]">Shop</Link>
-        <Link href="/about" className="hover:text-[#d4b2ff]">About</Link>
+        <Link href="/" className="hover:text-[#B892FF]">Home</Link>
+        <Link href="/shop" className="hover:text-[#B892FF]">Shop</Link>
+        <Link href="/about" className="hover:text-[#B892FF]">About</Link>
       </div>
 
       {/* Desktop Buttons */}
       <div className="hidden md:flex gap-4">
         <Button label="LOGIN" href="/login" color="#C1F8F2" />
-        <Button label="CART • 0" href="/cart" color="#DDC8F8" />
+        <Button label="BASKET • 0" href="/basket" color="#DDC8F8" icon={<FontAwesomeIcon icon={faBasketShopping} className="text-xs" />} />
       </div>
 
       {/* Mobile Menu Toggle Button */}
@@ -52,7 +54,7 @@ export default function Navbar() {
           <Link href="/about" onClick={() => setIsOpen(false)}>About</Link>
           <div className="flex gap-4">
              <Button label="LOGIN" href="/login" color="#C1F8F2" />
-             <Button label="CART • 0" href="/cart" color="#DDC8F8" />
+             <Button label="BASKET • 0" href="/basket" color="#DDC8F8" />
           </div>
         </div>
       )}

@@ -20,7 +20,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="text-sm text-gray-300 max-w-xs">
-            Where pixels meet pastels. Curated kawaii cyber gaming for collectors.
+            THE spawn point for all game enthusiasts and collectors.
           </p>
         </div>
 
