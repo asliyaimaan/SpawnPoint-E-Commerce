@@ -3,7 +3,6 @@ FINAL CLEAN STRUCTURE
 users:
 id
 username
-email
 xp_points
 avatar_url
 created_at

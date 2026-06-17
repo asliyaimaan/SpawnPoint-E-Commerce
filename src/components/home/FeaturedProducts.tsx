@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import ProductCard from "@/components/ui/ProductCard";
+import NavLink from "@/components/ui/NavLink";
 
 export default async function FeaturedProducts() {
   // Fetch only featured products
@@ -19,7 +20,7 @@ export default async function FeaturedProducts() {
 
         <div className="flex justify-between items-end">
           <h2 className="text-3xl font-mono">New on the shelf</h2>
-          <a href="#" className="text-sm underline underline-offset-4">VIEW ALL →</a>
+          <NavLink href="/shop" text="VIEW ALL →" />
         </div>
       </div>
 

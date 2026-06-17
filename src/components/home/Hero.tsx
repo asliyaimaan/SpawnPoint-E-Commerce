@@ -34,7 +34,7 @@ export default function Hero() {
           <Button 
             label="SHOP NOW" 
             href="/shop" 
-            color="#e3b8ff" 
+            color="#f5bfff" 
             icon={<FontAwesomeIcon icon={faPlay} className="text-xs" />}
           />
         </div>

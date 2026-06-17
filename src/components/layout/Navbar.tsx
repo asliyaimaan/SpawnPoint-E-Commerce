@@ -1,14 +1,32 @@
 'use client'; // Required for useState
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Add useEffect
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/Button";
+import { supabase } from "@/lib/supabase"; // Import your supabase client
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check current session
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setIsLoggedIn(!!session);
+    };
+    checkUser();
+
+    // Listen for auth changes (in case they login/logout in another tab)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLoggedIn(!!session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <nav className="sticky top-0 z-50 relative flex items-center justify-between px-4 md:px-8 py-4 border-b-2 border-black bg-white">
@@ -37,7 +55,12 @@ export default function Navbar() {
 
       {/* Desktop Buttons */}
       <div className="hidden md:flex gap-4">
-        <Button label="LOGIN" href="/login" color="#C1F8F2" />
+        {/* Dynamic Button */}
+        {isLoggedIn ? (
+          <Button label="PROFILE" href="/profile" color="#C1F8F2" />
+        ) : (
+          <Button label="LOGIN" href="/login" color="#C1F8F2" />
+        )}
         <Button label="BASKET • 0" href="/basket" color="#DDC8F8" icon={<FontAwesomeIcon icon={faBasketShopping} className="text-xs" />} />
       </div>
 
@@ -53,7 +76,12 @@ export default function Navbar() {
           <Link href="/shop" onClick={() => setIsOpen(false)}>Shop</Link>
           <Link href="/about" onClick={() => setIsOpen(false)}>About</Link>
           <div className="flex gap-4">
-             <Button label="LOGIN" href="/login" color="#C1F8F2" />
+             {/* Dynamic Button */}
+              {isLoggedIn ? (
+                <Button label="PROFILE" href="/profile" color="#C1F8F2" />
+              ) : (
+                <Button label="LOGIN" href="/login" color="#C1F8F2" />
+              )}
              <Button label="BASKET • 0" href="/basket" color="#DDC8F8" />
           </div>
         </div>
