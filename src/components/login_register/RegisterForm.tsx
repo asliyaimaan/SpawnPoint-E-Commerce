@@ -24,7 +24,7 @@ export default function RegisterForm() {
 
     if (error) {
       let msg = error.message;
-      if (msg.includes('already exists')) msg = "That username is already taken. Try another one!";
+      if (msg.includes('error saving')) msg = "That username is already taken. Try another one!";
       else if (msg.includes('already registered')) msg = "This email is already in use. Try logging in!";
       
       setErrorMessage(msg);

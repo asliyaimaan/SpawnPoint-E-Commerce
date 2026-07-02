@@ -7,7 +7,7 @@ interface UserProfileProps {
   profile: {
     username: string;
     xp_points: number;
-    avatar_url: string;
+    avatars: { avatar_url: string }; // Changed from avatar_url: string
   };
 }
 
@@ -62,7 +62,7 @@ export default function UserProfile({
         <div className="flex items-center justify-center">
             <div className="border-3 border-black rounded-full">
                 <Image
-                src={profile.avatar_url || "/default-pfp.png"}
+                src={profile.avatars?.avatar_url || "https://esmcaeovdxcriamenysu.supabase.co/storage/v1/object/public/profile%20pics/pfp0.jpg"} // Accessing the joined data
                 alt="Profile Avatar"
                 width={220}
                 height={220}

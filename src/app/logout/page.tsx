@@ -9,17 +9,20 @@ export default function LogoutPage() {
 
   useEffect(() => {
     async function getProfile() {
-      // 1. Get current auth session
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return router.push('/login');
 
-      // 2. Fetch the row from your public.users table
+      // Use a join to get the avatar_url from the related table
       const { data } = await supabase
         .from('users')
-        .select('*')
+        .select(`
+          username,
+          avatars ( avatar_url )
+        `)
         .eq('id', user.id)
         .single();
       
+      // Note: data.avatars will be an object { avatar_url: '...' }
       setProfile({ ...data, email: user.email });
     }
     getProfile();
@@ -36,7 +39,11 @@ export default function LogoutPage() {
       {profile && (
         <div className="bg-white p-6 border-2 border-black rounded-3xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mb-8 text-center font-mono w-full max-w-sm">
           <h2 className="font-bold uppercase mb-4">▶ CURRENT SESSION</h2>
-          <img src={profile.avatar_url || '/default-pfp.png'} alt="PFP" className="w-20 h-20 mx-auto rounded-full border-2 border-black mb-4" />
+          <img 
+            src={profile.avatars?.avatar_url || 'https://esmcaeovdxcriamenysu.supabase.co/storage/v1/object/public/profile%20pics/pfp0.jpg'} 
+            alt="PFP" 
+            className="w-20 h-20 mx-auto rounded-full border-2 border-black mb-4" 
+          />
           <p><strong>USER:</strong> {profile.username}</p>
           <p><strong>EMAIL:</strong> {profile.email}</p>
         </div>

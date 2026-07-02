@@ -4,7 +4,7 @@ users:
 id
 username
 xp_points
-avatar_url
+avatar_id
 created_at
 
 categories:
@@ -54,6 +54,9 @@ product_id
 content
 created_at
 
+avatars:
+id
+avatar_url
 
 ---SAMPLE DATA---
 

@@ -23,7 +23,7 @@ export default function Newsletter() {
           <input
             type="email"
             placeholder="player1@spawn.gg"
-            className="w-full md:w-[350px] border-2 border-black px-4 py-2 focus:outline-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
+            className="w-full md:w-[350px] border-2 border-black px-4 py-2 focus:outline-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-none transition-all"
           />
           <button
             onClick={handleJoin}
