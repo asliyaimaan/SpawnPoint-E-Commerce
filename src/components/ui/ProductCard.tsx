@@ -1,26 +1,28 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link"; // Import Link
 
 interface ProductProps {
+  id: string; // Add this
   name: string;
   price: number;
   image_url: string;
 }
 
-export default function ProductCard({ name, price, image_url }: ProductProps) {
+export default function ProductCard({ id,name, price, image_url }: ProductProps) {
   return (
     <div className="border-2 border-black bg-white rounded-[24px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col h-full overflow-hidden">
       
-      {/* Image Container */}
-      <div className="relative w-full aspect-square border-b-2 border-black bg-gray-50 overflow-hidden">
+      {/* Image Container with Zoom Effect */}
+      <Link href={`/product/${id}`} className="relative w-full aspect-square border-b-2 border-black bg-gray-50 overflow-hidden cursor-pointer group">
         <Image 
           src={image_url} 
           alt={name} 
           fill 
-          className="object-cover" 
+          className="object-cover transition-transform duration-500 group-hover:scale-110" 
         />
-      </div>
+      </Link>
 
       {/* Product Info */}
       <div className="p-4 flex-grow">
