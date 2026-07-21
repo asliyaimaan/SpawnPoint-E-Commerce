@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -28,9 +29,9 @@ export default function Footer() {
         <div>
           <h3 className="font-bold uppercase mb-3 text-xs text-gray-400 tracking-wider">Shop</h3>
           <ul className="flex flex-col gap-1 text-[13px] text-gray-300">
-            <li>Games</li>
-            <li>Accessories</li>
-            <li>Consoles</li>
+            <li><Link href="/shop/games" className="hover:text-white hover:underline transition-all">Games</Link></li>
+            <li><Link href="/shop/accessories" className="hover:text-white hover:underline transition-all">Accessories</Link></li>
+            <li><Link href="/shop/consoles" className="hover:text-white hover:underline transition-all">Consoles</Link></li>
           </ul>
         </div>
 
@@ -38,9 +39,9 @@ export default function Footer() {
         <div>
           <h3 className="font-bold uppercase mb-3 text-xs text-gray-400 tracking-wider">Links</h3>
           <ul className="flex flex-col gap-1 text-[13px] text-gray-300">
-            <li>Home</li>
-            <li>About</li>
-            <li>Shop</li>
+            <li><Link href="/" className="hover:text-white hover:underline transition-all">Home</Link></li>
+            <li><Link href="/about" className="hover:text-white hover:underline transition-all">About</Link></li>
+            <li><Link href="/shop" className="hover:text-white hover:underline transition-all">Shop</Link></li>
           </ul>
         </div>
       </div>

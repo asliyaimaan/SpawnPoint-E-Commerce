@@ -29,7 +29,7 @@ export default function LoginPage() {
       <LoginForm />
       
       <p className="mt-6 font-mono text-sm">
-        New here? <Link href="/register" className="underline font-bold">Create an account →</Link>
+        New here? <Link href="/register" className="font-bold hover:underline">Create an account →</Link>
       </p>
     </main>
   );

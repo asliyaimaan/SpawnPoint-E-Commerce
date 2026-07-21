@@ -39,6 +39,11 @@ user_id
 total_price
 status
 created_at
+full_name
+email
+address
+city
+postal_code
 
 order_items:
 id

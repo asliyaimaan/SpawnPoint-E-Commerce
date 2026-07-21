@@ -6,27 +6,44 @@ import Link from "next/link";
 import Button from "../ui/Button";
 import { supabase } from "@/lib/supabase"; // Import your supabase client
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useCartStore } from "@/store/useCartStore";
 
 export default function Navbar() {
+  const { toggleCart, totalQuantity, setCartItems } = useCartStore();
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  
   useEffect(() => {
-    // Check current session
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       setIsLoggedIn(!!session);
+      if (session?.user) fetchCart(session.user.id);
     };
     checkUser();
 
-    // Listen for auth changes (in case they login/logout in another tab)
+    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setIsLoggedIn(!!session);
+      if (session?.user) fetchCart(session.user.id);
+      else setCartItems([]); // Clear cart on logout
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [setCartItems]);
+
+  const fetchCart = async (userId: string) => {
+    const { data, error } = await supabase
+      .from('cart_items')
+      // Make sure 'image_url' is included in the selection inside the join!
+      .select('id, product_id, quantity, product:products(name, price, image_url)') 
+      .eq('user_id', userId);
+    
+    if (data) {
+      console.log("Cart Data:", data); // Check your browser console to see if image_url is present
+      setCartItems(data as any);
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 relative flex items-center justify-between px-4 md:px-8 py-4 border-b-2 border-black bg-white">
@@ -61,7 +78,14 @@ export default function Navbar() {
         ) : (
           <Button label="LOGIN" href="/login" color="#C1F8F2" />
         )}
-        <Button label="BASKET • 0" href="/basket" color="#DDC8F8" icon={<FontAwesomeIcon icon={faBasketShopping} className="text-xs" />} />
+        <button 
+          onClick={toggleCart}
+          className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all uppercase"
+          style={{ backgroundColor: "#DDC8F8" }}
+        >
+          <FontAwesomeIcon icon={faCartShopping} className="text-xs" />
+          CART • {totalQuantity}
+        </button>
       </div>
 
       {/* Mobile Menu Toggle Button */}
@@ -82,7 +106,14 @@ export default function Navbar() {
               ) : (
                 <Button label="LOGIN" href="/login" color="#C1F8F2" />
               )}
-             <Button label="BASKET • 0" href="/basket" color="#DDC8F8" />
+            <button 
+              onClick={toggleCart}
+              className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all uppercase"
+              style={{ backgroundColor: "#DDC8F8" }}
+            >
+              <FontAwesomeIcon icon={faCartShopping} className="text-xs" />
+              CART • {totalQuantity}
+            </button>
           </div>
         </div>
       )}

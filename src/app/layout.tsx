@@ -8,6 +8,8 @@ import "./globals.css";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ToastNotification from "@/components/ui/ToastNotification";
+import Cart from "@/components/cart/Cart";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,11 +54,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${jersey.variable} ${spaceMono.variable}`}
     >
       <body className="min-h-full flex flex-col bg-white text-black">
+        <Cart />
         <Navbar />
-
         {children}
-
         <Footer />
+        
+        {/* Move it to the bottom of the body */}
+        <ToastNotification />
       </body>
     </html>
   );

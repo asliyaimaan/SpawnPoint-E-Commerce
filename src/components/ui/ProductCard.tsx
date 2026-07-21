@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link"; // Import Link
+import AddToCartButton from "@/components/ui/AddToCartButton";
 
 interface ProductProps {
   id: string; // Add this
@@ -31,12 +32,13 @@ export default function ProductCard({ id,name, price, image_url }: ProductProps)
         {/* Footer*/}
         <div className="flex justify-between items-center">
           <span className="text-xl font-mono">${price}</span>
-          <button 
-            onClick={() => console.log("Added to basket!")}
+          <AddToCartButton 
+            productId={id} 
+            qty={1} 
             className="cursor-pointer border-2 border-black px-3 py-2 bg-[#FDFD96] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] text-[10px] font-bold transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
           >
             + ADD
-          </button>
+          </AddToCartButton>
         </div>
       </div>
     </div>

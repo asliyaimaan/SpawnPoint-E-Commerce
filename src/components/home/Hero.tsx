@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto flex items-center justify-between gap-16">
         {/* Left Content */}
         <div className="max-w-lg space-y-6">
-          <div className="bg-[#FDFD96] border-2 border-black inline-block px-3 py-1 font-mono text-sm">
+          <div className="bg-[#FDFD96] border-2 border-black inline-block px-3 py-1 font-mono font-bold rounded-lg text-sm">
             ▶ PRESS START
           </div>
           
